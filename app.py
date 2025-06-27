@@ -60,6 +60,17 @@ if pred == 1:
 else:
     st.success(f"Low Fire Risk ({(1-prob)*100:.2f}% probability)")
 
+# Train regression model on the same features
+reg_y = data['area']
+reg_model = RandomForestRegressor(n_estimators=100, random_state=42)
+reg_model.fit(X_train, reg_y.loc[y_train.index])
+
+# Predict burned area
+area_pred = reg_model.predict(user_input)[0]
+
+st.subheader("🔥 Predicted Burned Area")
+st.write(f"Estimated area that could burn: **{area_pred:.2f} hectares**")
+
 # --- Fire Spread Simulation ---
 st.subheader("🔥 Simple Fire Spread Simulation")
 
