@@ -16,7 +16,7 @@ st.markdown("Predict fire-prone areas using real UCI data and visualize spread s
 @st.cache_data
 
 def load_data():
-    file_path = r'D:\Projects\DS\data\forest+fires\forestfires.csv'
+    file_path = r'https://github.com/Mohammad-Asaad-Sayed/Bharatiya-Antariksh-Hackathon-2025-Idea-Submission-/blob/main/forestfires.csv'
     df = pd.read_csv(file_path)
     df['fire_risk'] = df['area'].apply(lambda x: 1 if x > 0 else 0)
     return df
